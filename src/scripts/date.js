@@ -15,8 +15,10 @@ export function endMonth(date) {
 }
 
 export function datesInMonth(date) {
-  let length = {length: endMonth(date).getDate()};
-  return Array.from(length, (_, day) => new Date(date.getFullYear(), date.getMonth(), day + 1));
+  const numberOfDays = endMonth(date).getDate();
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  return Array(numberOfDays).fill().map((_, day) => new Date(year, month, day + 1, 0, 0, 0, 0));
 }
 
 export function isSame(date, other, filter='year month day') {
